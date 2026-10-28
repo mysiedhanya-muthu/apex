@@ -1,0 +1,21 @@
+{
+  "name": "apex-budget-tracking-suite",
+  "version": "1.0.0",
+  "description": "Professional Personal Expense & Budget Tracking Application with Dual Techie HUD & Minimalist Glassmorphism Portals",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 3000",
+    "dev": "python -m http.server 3000",
+    "serve": "python -m http.server 3000"
+  },
+  "keywords": [
+    "expense-tracker",
+    "budget-management",
+    "glassmorphism",
+    "fintech",
+    "cyberpunk-techie",
+    "minimalism"
+  ],
+  "author": "Antigravity Engineering",
+  "license": "MIT"
+}

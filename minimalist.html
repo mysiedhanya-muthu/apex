@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Valence Minimalist — Obsidian Frosted Glass Personal Finance Portal. Minimalist Apple VisionOS inspired wealth and budget tracker." />
+  <title>Valence — Minimalist Obsidian Glass Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="styles/minimalist.css" />
+</head>
+<body>
+
+  <!-- ═══ FLOATING CAPSULE NAVIGATION ═══ -->
+  <header class="nav-holder" role="banner">
+    <nav class="glass-nav-pill" role="navigation" aria-label="Portal Navigation">
+      <a href="minimalist.html" class="nav-brand-group">
+        <div class="brand-gem" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <div class="brand-caption">
+          <span class="brand-logo-text">VALENCE</span>
+          <span class="brand-logo-sub">Obsidian Glass</span>
+        </div>
+      </a>
+
+      <div class="nav-segments">
+        <button class="nav-tab-btn active" id="g-tab-overview" onclick="gShowTab('overview')">Overview</button>
+        <button class="nav-tab-btn" id="g-tab-ledger" onclick="gShowTab('ledger')">Ledger</button>
+        <button class="nav-tab-btn" id="g-tab-budgets" onclick="gShowTab('budgets')">Budgets</button>
+        <button class="nav-tab-btn" id="g-tab-insights" onclick="gShowTab('insights')">Insights</button>
+      </div>
+
+      <div class="nav-right-actions">
+        <a href="index.html" class="portal-switch-btn" title="Switch to Institutional Terminal">
+          <span>Terminal</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══ MAIN PORTAL CONTAINER ═══ -->
+  <main class="portal-container" role="main">
+
+    <!-- 1. OVERVIEW VIEW -->
+    <section class="portal-view active" id="g-view-overview" aria-label="Portal Overview">
+      
+      <!-- Hero Balance -->
+      <div class="hero-balance-section">
+        <div class="hero-pill-badge">
+          <span class="hero-dot-status" aria-hidden="true"></span>
+          <span>LIQUID VAULT • REAL-TIME SYNC</span>
+        </div>
+        <div class="hero-balance-headline">
+          <h1 class="hero-balance-display" id="g-hero-balance">$0.00</h1>
+          <button class="privacy-toggle-btn" id="btn-toggle-privacy" onclick="gTogglePrivacy()" aria-label="Toggle amount privacy mask" title="Toggle privacy mask">
+            <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <p class="hero-subtitle">Consolidated position across high-yield savings & operational checking</p>
+      </div>
+
+      <!-- KPI Summary Row -->
+      <div class="kpi-row">
+        <div class="glass-kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-label">Total Capital</span>
+            <div class="kpi-icon-pill" style="background:rgba(99,102,241,0.15); color:#818CF8;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+          </div>
+          <div class="kpi-val" id="g-kpi-total">$0.00</div>
+          <div class="kpi-sub" id="g-kpi-delta">+12.8% vs last month</div>
+        </div>
+
+        <div class="glass-kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-label">Monthly Inflow</span>
+            <div class="kpi-icon-pill" style="background:rgba(16,185,129,0.15); color:#34D399;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+          </div>
+          <div class="kpi-val inc" id="g-kpi-inflow">$0.00</div>
+          <div class="kpi-sub" id="g-kpi-inc-count">Credited deposits</div>
+        </div>
+
+        <div class="glass-kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-label">Monthly Outflow</span>
+            <div class="kpi-icon-pill" style="background:rgba(244,63,94,0.15); color:#FB7185;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+            </div>
+          </div>
+          <div class="kpi-val exp" id="g-kpi-outflow">$0.00</div>
+          <div class="kpi-sub" id="g-kpi-exp-count">Debited expenses</div>
+        </div>
+
+        <div class="glass-kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-label">Savings Velocity</span>
+            <div class="kpi-icon-pill" style="background:rgba(245,158,11,0.15); color:#FBBF24;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+          </div>
+          <div class="kpi-val" id="g-kpi-rate">0.0%</div>
+          <div class="kpi-sub">Target: > 30.0%</div>
+        </div>
+      </div>
+
+      <!-- Charts & Content Grid -->
+      <div class="glass-grid">
+        <!-- Cashflow Spline Tile -->
+        <div class="glass-tile">
+          <div class="tile-head">
+            <div>
+              <h2 class="tile-title">Capital Velocity Curve</h2>
+              <div class="tile-caption">Inflow vs. outflow dynamics</div>
+            </div>
+            <select class="glass-select" id="g-chart-months" onchange="gRenderCashflow()">
+              <option value="6">6 Months</option>
+              <option value="12" selected>12 Months</option>
+            </select>
+          </div>
+          <div class="chart-container-glass">
+            <canvas id="g-canvas-cashflow" aria-label="Cashflow spline curve" style="width:100%; height:230px;"></canvas>
+          </div>
+        </div>
+
+        <!-- Donut Allocation Tile -->
+        <div class="glass-tile">
+          <div class="tile-head">
+            <div>
+              <h2 class="tile-title">Spending Breakdown</h2>
+              <div class="tile-caption">Volume by sector</div>
+            </div>
+          </div>
+          <div style="position:relative; display:flex; justify-content:center; align-items:center; min-height:160px;">
+            <canvas id="g-canvas-donut" style="max-height:160px; max-width:160px;" aria-label="Category allocation donut"></canvas>
+            <div style="position:absolute; text-align:center; pointer-events:none;">
+              <div style="font-size:18px; font-weight:700; color:#fff;" id="g-donut-center-amt">$0</div>
+              <div style="font-size:10px; color:var(--txt-tertiary); text-transform:uppercase;">Outflow</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;" id="g-donut-legend"></div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions & Budgets Grid -->
+      <div class="glass-grid even">
+        <!-- Activity Feed -->
+        <div class="glass-tile">
+          <div class="tile-head">
+            <div>
+              <h2 class="tile-title">Recent Activity</h2>
+              <div class="tile-caption">Live transactions</div>
+            </div>
+            <button class="portal-switch-btn" onclick="gShowTab('ledger')">See All</button>
+          </div>
+          <div class="glass-feed" id="g-recent-feed"></div>
+        </div>
+
+        <!-- Budget Health -->
+        <div class="glass-tile">
+          <div class="tile-head">
+            <div>
+              <h2 class="tile-title">Budget Caps</h2>
+              <div class="tile-caption">Active category monitoring</div>
+            </div>
+            <button class="portal-switch-btn" onclick="gShowTab('budgets')">Manage</button>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:14px;" id="g-budget-snapshot"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 2. LEDGER TAB -->
+    <section class="portal-view" id="g-view-ledger" aria-label="All Transactions">
+      <div class="tile-head" style="margin-bottom:20px;">
+        <div>
+          <h2 class="tile-title" style="font-size:20px;">Complete Transaction Ledger</h2>
+          <div class="tile-caption">Chronological record of transactions synchronized with main terminal</div>
+        </div>
+        <button class="dock-btn primary" onclick="gOpenModal('expense')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Record Transaction
+        </button>
+      </div>
+
+      <div class="glass-tile">
+        <div class="glass-feed" id="g-full-ledger-feed"></div>
+      </div>
+    </section>
+
+    <!-- 3. BUDGETS TAB -->
+    <section class="portal-view" id="g-view-budgets" aria-label="All Budgets">
+      <div class="tile-head" style="margin-bottom:20px;">
+        <div>
+          <h2 class="tile-title" style="font-size:20px;">Spending Caps & Targets</h2>
+          <div class="tile-caption">Category allocation thresholds</div>
+        </div>
+        <button class="dock-btn primary" onclick="gOpenBudgetModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Spending Cap
+        </button>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px;" id="g-all-budgets-grid"></div>
+    </section>
+
+    <!-- 4. INSIGHTS TAB -->
+    <section class="portal-view" id="g-view-insights" aria-label="Wealth Insights">
+      <div class="tile-head" style="margin-bottom:20px;">
+        <div>
+          <h2 class="tile-title" style="font-size:20px;">Wealth & Spending Insights</h2>
+          <div class="tile-caption">Automated intelligence on capital retention</div>
+        </div>
+      </div>
+
+      <div class="glass-grid even" id="g-insights-container"></div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FLOATING DOCK AT BOTTOM ═══ -->
+  <aside class="floating-action-dock" aria-label="Quick Actions">
+    <button class="dock-btn primary" onclick="gOpenModal('expense')" title="Log an expense">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Log Outflow
+    </button>
+    <button class="dock-btn secondary" onclick="gOpenModal('income')" title="Record income">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+      </svg>
+      Credit Inflow
+    </button>
+    <button class="dock-btn secondary" onclick="gSeedData()" title="Reload demo transactions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+      </svg>
+      Seed Demo
+    </button>
+  </aside>
+
+  <!-- ═══ GLASS TRANSACTION MODAL ═══ -->
+  <div class="glass-modal-backdrop" id="g-modal-txn" role="dialog" aria-modal="true" aria-labelledby="g-modal-txn-title">
+    <div class="glass-modal-dialog">
+      <div class="modal-glass-head">
+        <h3 class="modal-glass-title" id="g-modal-txn-title">Record Flow Entry</h3>
+        <button class="modal-glass-close" onclick="gCloseModal()" aria-label="Close modal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <form class="modal-glass-body" id="g-form-txn" onsubmit="gHandleSubmit(event)">
+        <div class="g-field">
+          <label class="g-lbl" for="g-input-type">Flow Direction</label>
+          <select class="g-input" id="g-input-type" onchange="gSyncCatOptions()" required>
+            <option value="expense">Outflow (Expense)</option>
+            <option value="income">Inflow (Income)</option>
+          </select>
+        </div>
+        <div class="g-field">
+          <label class="g-lbl" for="g-input-desc">Merchant / Source</label>
+          <input type="text" class="g-input" id="g-input-desc" placeholder="e.g. Apple Store, Stripe Payout" required />
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="g-field">
+            <label class="g-lbl" for="g-input-amount">Amount</label>
+            <input type="number" step="0.01" min="0.01" class="g-input" id="g-input-amount" placeholder="0.00" required />
+          </div>
+          <div class="g-field">
+            <label class="g-lbl" for="g-input-date">Date</label>
+            <input type="date" class="g-input" id="g-input-date" required />
+          </div>
+        </div>
+        <div class="g-field">
+          <label class="g-lbl" for="g-input-cat">Category</label>
+          <select class="g-input" id="g-input-cat" required></select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
+          <button type="button" class="dock-btn secondary" onclick="gCloseModal()">Cancel</button>
+          <button type="submit" class="dock-btn primary">Save Entry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ GLASS BUDGET MODAL ═══ -->
+  <div class="glass-modal-backdrop" id="g-modal-budget" role="dialog" aria-modal="true" aria-labelledby="g-modal-budget-title">
+    <div class="glass-modal-dialog">
+      <div class="modal-glass-head">
+        <h3 class="modal-glass-title" id="g-modal-budget-title">Set Category Cap</h3>
+        <button class="modal-glass-close" onclick="gCloseBudgetModal()" aria-label="Close modal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <form class="modal-glass-body" id="g-form-budget" onsubmit="gHandleBudgetSubmit(event)">
+        <div class="g-field">
+          <label class="g-lbl" for="g-b-cat">Category</label>
+          <select class="g-input" id="g-b-cat" required></select>
+        </div>
+        <div class="g-field">
+          <label class="g-lbl" for="g-b-limit">Monthly Cap</label>
+          <input type="number" step="10" min="10" class="g-input" id="g-b-limit" placeholder="600.00" required />
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
+          <button type="button" class="dock-btn secondary" onclick="gCloseBudgetModal()">Cancel</button>
+          <button type="submit" class="dock-btn primary">Enforce Cap</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Synchronized JavaScript Engine -->
+  <script src="js/minimalist.js"></script>
+</body>
+</html>
